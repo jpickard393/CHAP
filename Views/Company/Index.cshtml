@@ -1,0 +1,23 @@
+﻿@model CHAP.Models.Company
+<div class="form-horizontal">
+    <hr />
+    @Html.DisplayNameFor(model => model)
+    <div class="form-group">
+        <h1>Companies House API</h1>
+        <table class="table table-responsive" style="width:400px">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompanyNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CompanyName)
+                </th>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(m => m.CompanyNumber)</td>
+                <td>@Html.DisplayFor(m => m.CompanyName)</td>
+            </tr>
+            
+        </table>
+    </div>
+</div>
