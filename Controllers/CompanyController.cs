@@ -4,51 +4,31 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using Newtonsoft.Json;
-using CHAP.Models;
-using System.Text;
+using CHAP;
+using Microsoft.Extensions.Configuration;
 
 namespace CHAP.Controllers
 {
+    using Services;
     public class CompanyController : Controller
     {
-        string baseUrl = "https://api.company-information.service.gov.uk";
-        string testCompany = "02312959";
-
-        // GET: /<controller>/
-        public async Task<IActionResult> Index()
+        private readonly IConfiguration _config;
+        public CompanyController(IConfiguration configuration)
         {
-            // ToDo:  put this is class
-            // put test company in app settings
-            // put key in envronment variable
-                
-            var company = new Company();
+            _config = configuration;
+        }
 
-            using (var client = new HttpClient())
+        public async Task<IActionResult> Index(string companyNumber)
+        {
+            if(!string.IsNullOrWhiteSpace(companyNumber))
             {
-                client.BaseAddress = new Uri(baseUrl);
-                client.DefaultRequestHeaders.Clear();
-
-                var byteArray = Encoding.ASCII.GetBytes("811bff84-d342-49c4-a65d-eab51efc058c");
-                
-                //Define request data format
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
-
-                //Sending request to find web api REST service resource GetAllEmployees using HttpClient
-                HttpResponseMessage Res = await client.GetAsync("company/" + testCompany);
-
-                //Checking the response is successful or not which is sent using HttpClient
-                if (Res.IsSuccessStatusCode)
-                {
-                    //Storing the response details recieved from web api
-                    var CHResponse = Res.Content.ReadAsStringAsync().Result;
-                    company = JsonConvert.DeserializeObject<Company>(CHResponse);
-                }
-                //returning the employee list to view
-                return View(company);
+                string path = "company/";
+                CHAPIRequest request = new CHAPIRequest(_config);
+                var companyView = await request.GetCompanyId(path, companyNumber);
+                return View(companyView);
             }
+            return View();
+            
         }
     }
 }
-

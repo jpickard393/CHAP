@@ -1,23 +1,40 @@
 ﻿@model CHAP.Models.Company
 <div class="form-horizontal">
+
+    <h1 class="companyTitleColour">Companies House API Demo</h1>
     <hr />
-    @Html.DisplayNameFor(model => model)
-    <div class="form-group">
-        <h1>Companies House API</h1>
-        <table class="table table-responsive" style="width:400px">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.CompanyNumber)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CompanyName)
-                </th>
-            </tr>
-            <tr>
-                <td>@Html.DisplayFor(m => m.CompanyNumber)</td>
-                <td>@Html.DisplayFor(m => m.CompanyName)</td>
-            </tr>
-            
-        </table>
+    <div class="container">
+        <div class="form-group">
+            <form asp-action="index" method="get">
+                <div class="row">
+                    <div class="col-md-2">
+                        <input asp-for="CompanyNumber" class="form-control" type="text" value="02312959" />
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" value="Find Company" class="btn btn-success" />
+                    </div>
+                </div>
+            </form>
+
+            <div class="form-group resultsContainer">
+                @if (Model != null)
+                {
+                    <table class="table table-responsive" style="width:400px">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CompanyNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CompanyName)
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(m => m.CompanyNumber)</td>
+                            <td>@Html.DisplayFor(m => m.CompanyName)</td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </div>
     </div>
 </div>
