@@ -19,20 +19,36 @@
             <div class="form-group resultsContainer">
                 @if (Model != null)
                 {
-                    <table class="table table-responsive" style="width:400px">
+
+
+<table class="table table-responsive" style="width:400px">
+    <tr>
+        @if (Model.HasBeenLiquidated)
+        {
+            <td>
+                @Html.DisplayNameFor(model => model.HasBeenLiquidated)
+            </td>
+            <td>
+                @Html.DisplayFor(m => m.HasBeenLiquidated)
+            </td>
+        }
+
+    </tr>
                         <tr>
-                            <th>
+                            <td>
                                 @Html.DisplayNameFor(model => model.CompanyNumber)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.CompanyName)
-                            </th>
+                            </td>
+                            
+                            <td>@Html.DisplayFor(m => m.CompanyNumber)</td>
                         </tr>
                         <tr>
-                            <td>@Html.DisplayFor(m => m.CompanyNumber)</td>
+                            <td>
+                                @Html.DisplayNameFor(model => model.CompanyName)
+                            </td>
                             <td>@Html.DisplayFor(m => m.CompanyName)</td>
                         </tr>
-                    </table>
+            </table>
+                  
                 }
             </div>
         </div>
