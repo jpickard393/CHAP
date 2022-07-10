@@ -25,3 +25,32 @@ body {
 .companyTitleColour {
     color:green;
 }
+
+.liquidationRow {
+    background-color: darkred;
+    text-align: center;
+}
+.companyRow {
+    border-bottom:1px silver solid;
+    padding:10px;
+}
+.liquidationField {
+    color: white;
+    text-decoration: none;
+    font-size: x-large;
+}
+    .liquidationField:hover {
+        text-decoration: none;
+        color: white;
+    }
+
+col {
+    border:1px solid red;
+}
+
+.warning {
+    color:red;
+}
+.dataContainer {
+    margin-top:20px;
+}
