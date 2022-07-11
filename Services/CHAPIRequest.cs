@@ -3,7 +3,6 @@ using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using CHAP.Models;
 using System.Text;
-using System.Threading.Tasks;
 
 
 namespace CHAP.Services
@@ -20,8 +19,11 @@ namespace CHAP.Services
         public async Task<Company> GetCompanyId(string path, string searchParam)
         {
             var company = new Company();
-
-            if (!string.IsNullOrWhiteSpace(searchParam) && !string.IsNullOrWhiteSpace(path))
+            var apiKey = _config.GetValue<string>("api-key");
+            if (string.IsNullOrWhiteSpace(apiKey)) throw new Exception("APIKey Missing");
+            
+            if (!string.IsNullOrWhiteSpace(searchParam)
+                && !string.IsNullOrWhiteSpace(path))
             {
                 var baseUrl = _config.GetValue<string>("baseUrl");
                 
@@ -30,12 +32,12 @@ namespace CHAP.Services
                     client.BaseAddress = new Uri(baseUrl);
                     client.DefaultRequestHeaders.Clear();
 
-                    var byteArray = Encoding.ASCII.GetBytes("811bff84-d342-49c4-a65d-eab51efc058c");
+                    var byteArray = Encoding.ASCII.GetBytes(apiKey);
 
-                    //Define request data format
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(byteArray));
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                        Convert.ToBase64String(byteArray));
 
-                    //Sending request to find web api REST service resource GetAllEmployees using HttpClient
+                    //Sending request to find web api REST service resource using HttpClient
                     HttpResponseMessage Res = await client.GetAsync(path + searchParam);
 
                     //Checking the response is successful or not which is sent using HttpClient
@@ -45,6 +47,7 @@ namespace CHAP.Services
                         var CHResponse = Res.Content.ReadAsStringAsync().Result;
                         company = JsonConvert.DeserializeObject<Company>(CHResponse);
                     }
+
                 }
             }
             return company;

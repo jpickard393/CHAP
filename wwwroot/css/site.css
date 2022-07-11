@@ -29,6 +29,7 @@ body {
 .liquidationRow {
     background-color: darkred;
     text-align: center;
+    border:1px solid black;
 }
 .companyRow {
     border-bottom:1px silver solid;
