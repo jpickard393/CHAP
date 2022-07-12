@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using System.Net.Http;
-using CHAP;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace CHAP.Controllers
 {
     using Services;
+    using Services.Requests;
     public class CompanyController : Controller
     {
         private readonly IConfiguration _config;
@@ -22,13 +16,12 @@ namespace CHAP.Controllers
         {
             if(!string.IsNullOrWhiteSpace(companyNumber))
             {
-                string path = "company/";
-                CHAPIRequest request = new CHAPIRequest(_config);
-                var companyView = await request.GetCompanyId(path, companyNumber);
+                GetCompany request = new GetCompany(_config);
+                var companyView = await request.GetCompanyById(companyNumber);
+
                 return View(companyView);
             }
             return View();
-            
         }
     }
 }
