@@ -20,6 +20,7 @@ body {
 
 .resultsContainer {
     margin-top:30px;
+    margin-bottom:30px;
 }
 
 .companyTitleColour {
@@ -35,15 +36,20 @@ body {
     border-bottom:1px silver solid;
     padding:10px;
 }
+
+.companyRow-bottom {
+    border-bottom: 1px silver solid;
+    padding: 10px;
+}
 .liquidationField {
     color: white;
     text-decoration: none;
     font-size: x-large;
 }
-    .liquidationField:hover {
-        text-decoration: none;
-        color: white;
-    }
+.liquidationField:hover {
+    text-decoration: none;
+    color: white;
+}
 
 col {
     border:1px solid red;
