@@ -14,6 +14,7 @@
     <None Remove="Services\" />
     <None Remove="Services\Requests\" />
     <None Remove="Models\AdvancedSearch\" />
+    <None Remove="Views\AdvancedSearch\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
@@ -25,5 +26,6 @@
     <Folder Include="Services\" />
     <Folder Include="Services\Requests\" />
     <Folder Include="Models\AdvancedSearch\" />
+    <Folder Include="Views\AdvancedSearch\" />
   </ItemGroup>
 </Project>
