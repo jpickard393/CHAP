@@ -18,6 +18,9 @@ namespace CHAP.Models
 
         [JsonProperty("locality")]
         public string Locality { get; set; }
+
+        [JsonProperty("country")]
+        public string? Country { get; set; }
     }
 
 }

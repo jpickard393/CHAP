@@ -72,8 +72,21 @@ namespace CHAP.Models
         [JsonProperty("registered_office_is_in_dispute")]
         public bool RegisteredOfficeIsInDispute { get; set; }
 
+        [Display(Name = "Can File")]
         [JsonProperty("can_file")]
         public bool CanFile { get; set; }
+
+        [Display(Name = "Sic Codes")]
+        [JsonProperty("sic_codes")]
+        public List<string>? SicCodes { get; set; }
+
+        [Display(Name = "date of Cessation")]
+        [JsonProperty("date_of_cessation")]
+        public string? DateOfCessation { get; set; }
+
+        [Display(Name = "Kind")]
+        [JsonProperty("kind")]
+        public string? Kind { get; set; }
     }
 
 }

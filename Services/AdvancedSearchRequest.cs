@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
-using CHAP.Models;
+using CHAP.Models.AdvancedSearch;
 using System.Text;
 
-
-namespace CHAP.Services
+namespace CHAP.Services.Requests
 {
-    public class CHAPIRequest
+    public class AdvancedSearchRequest
     {
-        public async Task<Company> GetCompanyData(string apiKey, string path, string searchParam)
+        public async Task<AdvancedSearch> GetCompanyData(string apiKey, string path, string searchParam)
         {
-            var company = new Company();
+            var jsonResult = new AdvancedSearch();
             if (string.IsNullOrWhiteSpace(apiKey)) throw new Exception("APIKey Missing");
 
             using (var client = new HttpClient())
@@ -32,12 +31,12 @@ namespace CHAP.Services
                 {
                     //Storing the response details recieved from web api
                     var CHResponse = Res.Content.ReadAsStringAsync().Result;
-                    company = JsonConvert.DeserializeObject<Company>(CHResponse);
+                    jsonResult = JsonConvert.DeserializeObject<AdvancedSearch>(CHResponse);
                 }
             }
-            return company;
+            return jsonResult;
         }
-        
+
     }
 }
 

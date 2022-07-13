@@ -25,7 +25,7 @@ namespace CHAP.Services.Requests
 
                 string path = baseUrl + "company/";
 
-                CHAPIRequest request = new CHAPIRequest();
+                var request = new CompanyRequest();
                 company = await request.GetCompanyData(apiKey, path, companyNumber);
             }
             return company;
