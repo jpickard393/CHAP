@@ -35,62 +35,74 @@
                             </div>
                         </div>
                         }
-                    <div class="container dataContainer">
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.CompanyName)</div>
-                            <div class="col">@Html.DisplayFor(m => m.CompanyName)</div>
-                        </div>
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.CompanyNumber)</div>
-                            <div class="col">@Html.DisplayFor(m => m.CompanyNumber)</div>
-                        </div>
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.HasInsolvencyHistory)</div>
-                            @if (Model.HasInsolvencyHistory)
-                            {
-                                <div class="col warning"><a>YES</a></div>
-                            }
-                            else
-                            {
-                                <div class="col"><a>No</a></div>
-                            }
-                            
-                        </div>
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.RegisteredOfficeIsInDispute)</div>
-                            <div class="col">
-                                @if (Model.RegisteredOfficeIsInDispute)
-                                {
-                                    <a class="warning">YES</a>
-                                }
-                                else
-                                {
-                                    <a>No</a>
-                                }
-                            </div>
-                        </div>
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.CompanyStatus)</div>
-                            <div class="col">@Html.DisplayFor(m => m.CompanyStatus)</div>
-                        </div>
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.DateOfCreation)</div>
-                            <div class="col">@Html.DisplayFor(m => m.DateOfCreation)</div>
-                        </div>
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.RegisteredOfficeAddress)</div>
-                            <div class="col-md-6">
-                                <div class="col">
-                                    <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.AddressLine1)</p>
-                                    <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.AddressLine2)</p>
-                                    <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.Locality)</p>
-                                    <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.Region)</p>
-                                    <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.PostalCode)</p>
-                                </div>
-                            </div>
 
+            <div class="dataContainer container">
+                <div class="row companyRow">
+                    <div class="col-md-4">@Html.DisplayNameFor(model => model.CompanyName)</div>
+                    <div class="col">@Html.DisplayFor(m => m.CompanyName)</div>
+                </div>
+                <div class="row companyRow">
+                    <div class="col-md-4">@Html.DisplayNameFor(model => model.CompanyNumber)</div>
+                    <div class="col">@Html.DisplayFor(m => m.CompanyNumber)</div>
+                </div>
+                <div class="row companyRow">
+                    <div class="col-md-4">@Html.DisplayNameFor(model => model.HasInsolvencyHistory)</div>
+                    @if (Model.HasInsolvencyHistory)
+                    {
+                        <div class="col warning"><a>YES</a></div>
+                    }
+                    else
+                    {
+                        <div class="col"><a>No</a></div>
+                    }
+
+                </div>
+                <div class="row companyRow">
+                    <div class="col-md-4">@Html.DisplayNameFor(model => model.RegisteredOfficeIsInDispute)</div>
+                    <div class="col">
+                        @if (Model.RegisteredOfficeIsInDispute)
+                        {
+                            <a class="warning">YES</a>
+                        }
+                        else
+                        {
+                            <a>No</a>
+                        }
+                    </div>
+                </div>
+                <div class="row companyRow">
+                    <div class="col-md-4">@Html.DisplayNameFor(model => model.CompanyStatus)</div>
+                    <div class="col">@Html.DisplayFor(m => m.CompanyStatus)</div>
+                </div>
+                <div class="row companyRow">
+                    <div class="col-md-4">@Html.DisplayNameFor(model => model.DateOfCreation)</div>
+                    <div class="col">@Html.DisplayFor(m => m.DateOfCreation)</div>
+                </div>
+                <div class="row companyRow">
+                    <div class="col-md-4">@Html.DisplayNameFor(model => model.RegisteredOfficeAddress)</div>
+                    <div class="col-md-6">
+                        <div class="col">
+                            <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.AddressLine1)</p>
+                            <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.AddressLine2)</p>
+                            <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.Locality)</p>
+                            <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.Region)</p>
+                            <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.PostalCode)</p>
+                            <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.Country)</p>
                         </div>
                     </div>
+                </div>
+                <div class="row companyRow">
+                    @{ var undeliverable = Model.UndeliverableRegisteredOfficeAddress ? "Yes" : "No";}
+                    <div class="col-md-4">@Html.DisplayNameFor(model => model.UndeliverableRegisteredOfficeAddress)</div>
+                    <div class="col">@undeliverable</div>
+                </div>
+                <div class="row companyRow">
+                    @{ var liquidated = Model.HasBeenLiquidated ? "Yes" : "No";}
+                    <div class="col-md-4">@Html.DisplayNameFor(model => model.HasBeenLiquidated)</div>
+                    <div class="col">@liquidated</div>
+                </div>
+                
+            </div>
                 }
 
             </div>

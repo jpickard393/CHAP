@@ -10,6 +10,7 @@ namespace CHAP.Models
         [JsonProperty("status")]
         public string? Status { get; set; }
 
+        [Display(Name = "Undeliverable Registered Office Address")]
         [JsonProperty("undeliverable_registered_office_address")]
         public bool UndeliverableRegisteredOfficeAddress { get; set; }
 

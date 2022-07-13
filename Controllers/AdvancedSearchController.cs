@@ -16,15 +16,16 @@ namespace CHAP.Controllers
             _config = configuration;
         }
 
-        public async Task<IActionResult> Index(string searchParams)
+        public async Task<IActionResult> Index()
         {
-            if (!string.IsNullOrWhiteSpace(searchParams))
-            {
-                var request = new GetAdvancedSearch(_config);
-                var searchView = await request.GetAdvancedSearchAsync(searchParams);
+            
+            //if (!string.IsNullOrWhiteSpace(searchParam))
+            //{
+            //    var request = new GetAdvancedSearch(_config);
+            //    var searchView = await request.GetAdvancedSearchAsync(searchParam);
 
-                return View(searchView);
-            }
+            //    return View(searchView);
+            //}
             return View();
         }
     }

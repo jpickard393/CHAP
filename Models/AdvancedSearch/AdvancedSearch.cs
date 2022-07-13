@@ -19,6 +19,8 @@ namespace CHAP.Models.AdvancedSearch
 
         [JsonProperty("hits")]
         public int? Hits { get; set; }
+
+        public SearchOptions? SearchOptions { get; set; }
     }
 }
 

@@ -4,18 +4,22 @@
     <hr />
     <div class="container">
         <div class="form-group">
-            <form asp-action="index" method="get">
+            <form asp-action="index" method="post">
                 <div class="row">
                     <div class="col-md-3">
+                        @*@Html.DropDownListFor(model => model.SearchOptions, new List<SelectListItem>
+                   {
+                       new SelectListItem {Text = "Company Name Includes", Value = "company_name_includes" }
+                   })*@
                         <select name="criteria" class="form-control">
-                            <option value="">Select an option</option>
-                            <option value="company_name_includes">Company Name Includes</option>
-                            <option value="company_name_excludes">Company Name Excludes</option>
-                            <option value="company_status">Company Status</option>
-                        </select>
+                    <option value="">Select an option</option>
+                    <option value="company_name_includes">Company Name Includes</option>
+                    <option value="company_name_excludes">Company Name Excludes</option>
+                    <option value="company_status">Company Status</option>
+                </select>
                     </div>
                     <div class="col-md-3">
-                        <input type="text" placeholder="search value" class="form-control" />
+                        <input type="text" name="searchValue" placeholder="search value" class="form-control" />
                     </div>
                     <div class="col-md-2">
                         <input type="submit" value="Search" class="btn btn-success" />
