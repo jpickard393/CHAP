@@ -7,8 +7,16 @@
         <div class="form-group">
             <form asp-action="index" method="get">
                 <div class="row">
-                    <div class="col-md-2">
-                        <input class="form-control" type="text" />
+                    <div class="col-md-3">
+                        <select name="criteria" class="form-control">
+                            <option value="">Select an option</option>
+                            <option value="company_name_includes">Company Name Includes</option>
+                            <option value="company_name_excludes">Company Name Excludes</option>
+                            <option value="company_status">Company Status</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" placeholder="search value" class="form-control" />
                     </div>
                     <div class="col-md-2">
                         <input type="submit" value="Search" class="btn btn-success" />
@@ -17,80 +25,6 @@
             </form>
 
             <div class="form-group resultsContainer contsinainer">
-                @*@if (Model != null)
-                    {
-                    @if (Model.HasBeenLiquidated || Model.CompanyStatus == "dissolved")
-                        {
-                        <div class="container">
-                            <div class="row liquidationRow">
-                                @if (Model.HasBeenLiquidated)
-                                    {
-                                    <div class="col-md-12"><a class="liquidationField">Warning: This company has been LIQUIDATED</a></div>
-                                    }
-                                @if (Model.CompanyStatus == "dissolved")
-                                    {
-                                    <div class="col-md-12"><a class="liquidationField">Warning: This company has been DISSOLVED</a></div>
-                                    }
-                            </div>
-                        </div>
-                        }
-                    <div class="container dataContainer">
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.CompanyName)</div>
-                            <div class="col">@Html.DisplayFor(m => m.CompanyName)</div>
-                        </div>
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.CompanyNumber)</div>
-                            <div class="col">@Html.DisplayFor(m => m.CompanyNumber)</div>
-                        </div>
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.HasInsolvencyHistory)</div>
-                            @if (Model.HasInsolvencyHistory)
-                            {
-                                <div class="col warning"><a>YES</a></div>
-                            }
-                            else
-                            {
-                                <div class="col"><a>No</a></div>
-                            }
-                            
-                        </div>
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.RegisteredOfficeIsInDispute)</div>
-                            <div class="col">
-                                @if (Model.RegisteredOfficeIsInDispute)
-                                {
-                                    <a class="warning">YES</a>
-                                }
-                                else
-                                {
-                                    <a>No</a>
-                                }
-                            </div>
-                        </div>
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.CompanyStatus)</div>
-                            <div class="col">@Html.DisplayFor(m => m.CompanyStatus)</div>
-                        </div>
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.DateOfCreation)</div>
-                            <div class="col">@Html.DisplayFor(m => m.DateOfCreation)</div>
-                        </div>
-                        <div class="row companyRow">
-                            <div class="col-md-4">@Html.DisplayNameFor(model => model.RegisteredOfficeAddress)</div>
-                            <div class="col-md-6">
-                                <div class="col">
-                                    <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.AddressLine1)</p>
-                                    <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.AddressLine2)</p>
-                                    <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.Locality)</p>
-                                    <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.Region)</p>
-                                    <p>@Html.DisplayFor(m => m.RegisteredOfficeAddress.PostalCode)</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                }*@
 
             </div>
         </div>
